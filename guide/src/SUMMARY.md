@@ -18,5 +18,5 @@
 - [HD Maps](./api/hd_maps.md)
 
 # Miscellaneous
-- [Testing](./testing.md)
 - [Contributing](./contributing.md)
+- [Terms & Conditions](./terms_and_conditions)
