@@ -30,11 +30,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install mdBook and mdbook-katex.
+      - name: Install rust.
         run: |
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
           rustup update
-          cargo install mdbook mdbook-katex mdbook-admonish mdbook-toc
+      - name: Install mdbook.
+        run: |
+          cargo install mdbook --no-default-features --features search
+      - name: Install mdbook-katex.
+        run: |
+          cargo install mdbook-katex
+      - name: Install mdbook-admonish.
+        run: |
+          cargo install mdbook-admonish
+      - name: Install mdbook-toc.
+        run: |
+          cargo install mdbook-admonish
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
