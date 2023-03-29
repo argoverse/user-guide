@@ -45,7 +45,7 @@ jobs:
           cargo install mdbook-admonish
       - name: Install mdbook-toc.
         run: |
-          cargo install mdbook-admonish
+          cargo install mdbook-toc
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
