@@ -6,12 +6,11 @@
 
 ## Welcome
 
-Welcome to the Argoverse User Guide! This guide is intended to help you answer the following questions:
+Welcome to the Argoverse User Guide! This guide will assist you with the following:
 
-1. How do I setup `av2-api`?
-2. Where do I find the Argoverse 2 data?
-2. Which datasets are best suited for my research?
-3. Which tasks are natively supported in `av2-api`?
+1. Setting up `av2-api`.
+2. Getting the Argoverse 2 data.
+3. Deciding which datasets and tasks best align with your research goals.
 
 ## Getting Help
 
