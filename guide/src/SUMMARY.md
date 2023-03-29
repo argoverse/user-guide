@@ -19,4 +19,4 @@
 
 # Miscellaneous
 - [Contributing](./contributing.md)
-- [Terms & Conditions](./terms_and_conditions)
+- [Terms & Conditions](./terms_and_conditions.md)
