@@ -24,7 +24,7 @@ You will need to install `conda` on your machine. We recommend to install the `c
 $(which conda) init $SHELL
 ```
 
-~~~admonish note collapsible=true
+~~~admonish note
 You may need to run a post-install step to initialize `conda`:
 
 ```terminal
@@ -39,7 +39,7 @@ If `conda` is not found, you will need to add the binary to your `PATH` environm
 In your terminal emulator run,
 
 ```bash
-bash install.sh
+bash conda/install.sh
 ```
 
 which will install _all_ of the necessary dependencies in a conda environment named `av2`.
@@ -56,7 +56,7 @@ Our datasets are available for download from [AWS S3](https://aws.amazon.com/s3/
 
 For the best experience, we highly recommend using the open-source [s5cmd](https://github.com/peak/s5cmd) tool to transfer the data to your local filesystem. Please note that an AWS account is not required to download the datasets.
 
-```admonish note collapsible=true
+```admonish note
 Additional info can be found at [https://aws.amazon.com/blogs/opensource/parallelizing-s3-workloads-s5cmd/]().
 ```
 
