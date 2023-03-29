@@ -1,5 +1,9 @@
 # Terms and Conditions
 
+## Table of Contents
+
+<!-- toc -->
+
 ## Licensing:
 
 By using or downloading Argoverse, you are agreeing to comply with the terms of this page and any licensing terms referenced below.
