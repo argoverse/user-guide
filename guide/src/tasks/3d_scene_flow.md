@@ -31,8 +31,15 @@ Once the Sensor Dataset is set up (see [these instructions](https://github.com/a
 
 ## Evaluation Point Subset
 
-The contest only asks for flow and dynamic segmentation predictions on a subset of the input points. Specifically, we are only interested in points that do not belong to the ground and are within a 100m x 100m box centered on the origin. We offer a utility function `compute_eval_point_mask` in `av2.evaluation.scene_flow.utils` to compute this mask, but DO NOT USE THIS TO CREATE SUBMISSION FILES. To ensure consistency, we have pre-computed the masks for submission, which can be loaded using `get_eval_point_mask`.
+The contest only asks for flow and dynamic segmentation predictions on a subset of the input points. Specifically, we are only interested in points that do not belong to the ground and are within a 100m x 100m box centered on the origin. We offer a utility function `compute_eval_point_mask` in `av2.evaluation.scene_flow.utils` to compute this mask, but DO NOT USE THIS TO CREATE SUBMISSION FILES. To ensure consistency, we have pre-computed the masks for submission, which can be loaded using `get_eval_point_mask`. You can download the masks with the command:
 
+```terminal
+s5cmd --no-sign-request cp "s3://argoverse/tasks/3d_scene_flow/zips/*" .
+```
+
+```admonish note
+Please see [https://argoverse.github.io/user-guide/getting_started.html#installing-s5cmd]() to install `s5cmd`.
+```
 
 # Contest Submission Format
 
@@ -74,4 +81,4 @@ The file `example_submission.py` contains a basic example of how to output the s
 
 # Local Evaluation
 
-Before evaluating on the _test_ set, you will want to evaluate your model on the _validation_ set. To do this, first run `make_mask_files.py` and `make_annotation_files.py` to create files containing the minimum ground truth flow information needed to run the evaluation. Then, once your output is saved in the feather files described above, run `eval.py` to compute all leaderboard metrics.
+Before evaluating on the _test_ set, you will want to evaluate your model on the _validation_ set. To do this, first run `make_mask_files.py` and `make_annotation_files.py` to create files used to run the evaluation. Then, once your output is saved in the feather files described above, run `eval.py` to compute all leaderboard metrics.
