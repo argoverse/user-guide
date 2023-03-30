@@ -185,7 +185,7 @@ $$
 where $\{\text{ATE}_{\text{unit}},\text{ASE}_{\text{unit}},\text{AOE}_{\text{unit}}\}$ are the _normalized_ true positive errors.
 
 ```admonish note
-$\text{ATE}$, $\text{ASE}$, and $\text{AOE}$ are bounded by $2 \text{ m}$, $1$, and $\pi$.
+$\text{ATE}$, $\text{ASE}$, and $\text{AOE}$ are upper bounded by $2 \text{ m}$, $1$, and $\pi$.
 ```
 
 ```admonish important
