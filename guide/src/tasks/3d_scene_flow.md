@@ -38,7 +38,7 @@ s5cmd --no-sign-request cp "s3://argoverse/tasks/3d_scene_flow/zips/*" .
 ```
 
 ```admonish note
-Please see [](https://argoverse.github.io/user-guide/getting_started.html#installing-s5cmd) to install `s5cmd`.
+Please see [https://argoverse.github.io/user-guide/getting_started.html#installing-s5cmd]() to install `s5cmd`.
 ```
 
 # Contest Submission Format
