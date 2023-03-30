@@ -76,4 +76,4 @@ The file `example_submission.py` contains a basic example of how to output the s
 
 # Local Evaluation
 
-Before evaluating on the _test_ set, you will want to evaluate your model on the _validation_ set. To do this, first run `make_mask_files.py` and `make_annotation_files.py` to create files containing the minimum ground truth flow information needed to run the evaluation. Then, once your output is saved in the feather files described above, run `eval.py` to compute all leaderboard metrics.
+Before evaluating on the _test_ set, you will want to evaluate your model on the _validation_ set. To do this, first run `make_mask_files.py` and `make_annotation_files.py` to create files used to run the evaluation. Then, once your output is saved in the feather files described above, run `eval.py` to compute all leaderboard metrics.
