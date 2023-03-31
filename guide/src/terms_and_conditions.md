@@ -4,7 +4,7 @@
 
 <!-- toc -->
 
-## Licensing:
+## Licensing
 
 By using or downloading Argoverse, you are agreeing to comply with the terms of this page and any licensing terms referenced below.
 
@@ -20,7 +20,7 @@ By using or downloading Argoverse, you are agreeing to comply with the terms of 
 
 **Privacy.** Argoverse takes steps to protect the privacy of individuals by blurring faces and license plates. If you notice that your face or license plate is still identifiable, or if you have any privacy concerns pertaining to Argoverse, please contact us.
 
-## Competitions:
+## Competitions
 
 NO PURCHASE OR PAYMENT OF ANY KIND NECESSARY. A PURCHASE OR PAYMENT OF ANY KIND WILL NOT INCREASE YOUR CHANCES OF WINNING. THIS COMPETITION IS VOID WHERE PROHIBITED. BY ENTERING THIS COMPETITION, EACH ENTRANT AGREES TO THE FOLLOWING TERMS AND CONDITIONS. 
 
@@ -42,7 +42,7 @@ By entering this competition, each entrant agrees that his or her biographical i
 
 All decisions of Sponsor regarding the selection of winners, notification, and substitution of winners in accordance with these terms and conditions shall be binding and final. Winners will be determined as specifically described above, and not using any random drawing or method incorporating chance. 
 
-## Prize Details: 
+## Prize Details 
 
 There are no prizes. However, winners will be highlighted at the Workshop on Autonomous driving and on the Argoverse web page.
 
