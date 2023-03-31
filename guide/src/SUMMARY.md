@@ -13,7 +13,7 @@
     - [3D Object Detection](./tasks/3d_object_detection.md)
     - [3D Scene Flow](./tasks/3d_scene_flow.md)
     - [4D Occupancy Forecasting](./tasks/4d_occupancy_forecasting.md)
-    - [E2E Forecasting](./tasks/e2e_forecasting.md)
+    - [End-to-End Forecasting](./tasks/e2e_forecasting.md)
     - [Motion Forecasting](./tasks/motion_forecasting.md)
 
 # API Reference Guide

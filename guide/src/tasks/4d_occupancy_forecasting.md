@@ -1,5 +1,9 @@
 # 4D Occupancy Forecasting
 
+## Table of Contents
+
+<!-- toc -->
+
 ## Overview
 
 Understanding how an environment evolves with time is crucial for motion planning in autonomous systems. Classical methods may be lacking because they rely on costly human annotations in the form of semantic class labels, bounding boxes, and tracks or HD maps of cities to plan their motion — and thus are difficult to scale to large unlabeled datasets. Related tasks such as point cloud forecasting require algorithms to implicitly capture (1) vehicle extrinsics (i.e., the egomotion of the autonomous vehicle), (2) sensor intrinsics (i.e., the sampling pattern specific to the particular lidar sensor), and (3) the motion of other objects (things and stuff) in the scene. We argue from an autonomy perspective, the most useful and generic output is (3), which is directly evaluated by 4D spacetime occupancy forecasting. This allows for the possibility of training and evaluating occupancy algorithms across diverse datasets, sensors, and vehicles.
