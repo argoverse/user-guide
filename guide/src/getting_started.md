@@ -1,5 +1,9 @@
 # Getting Started
 
+~~~admonish important
+If you would like to take advantage of the most recent features, please install via `conda/install.sh`.
+~~~
+
 ## Table of Contents
 
 <!-- toc -->
@@ -10,7 +14,6 @@ In this section, we outline the following:
 
 1. Installing the supporting API, `av2`, for the Argoverse 2 and TbV family of datasets.
 2. Downloading the datasets to your local machine or server.
-
 
 ## Setup
 
