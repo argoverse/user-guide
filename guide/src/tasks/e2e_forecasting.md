@@ -10,7 +10,8 @@ Object detection and forecasting are fundamental components of embodied percepti
 
 To this end, our proposed benchmark will be the first to evaluate end-to-end perception on 26 classes defined by the AV2 ontology. Specifically, we will repurpose the AV2 sensor dataset, which has track annotations for 26 object categories, for end-to-end perception: for each timestep in a given sensor sequence, algorithms will have access to all prior frames and must produce tracks for all past sensor sweeps, detections for the current timestep, and forecasted trajectories for the next 3 s. This challenge is different from the Motion Forecasting challenge because we do not provide ground truth tracks as input, requiring algorithms to process raw sensor data. Our primary evaluation metric is Forecasting Average Precision, a joint detection and forecasting metric that computes performance averaged over static, linear, and nonlinearly moving cohorts. Unlike standard motion forecasting evaluation, end-to-end perception must consider both true positive and false positive predictions.
 
-Baselines: https://github.com/neeharperi/LT3D
+### Quick Start Guide 
+Check out our baselines [here](https://github.com/neeharperi/LT3D)
 
 # End-to-End Forecasting Taxonomy
 
@@ -178,6 +179,12 @@ with open("track_predictions.pkl", "wb") as f:
 ```
 
 ### Tracking Evaluation 
+
+| **Metric Name** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| HOTA            | HOTA explicitly balances the effect of performing accurate detection, association, and localization into a single unified metric. It is shown to better align with human visual evaluation of tracking performance. For more information, please check out _HOTA: A Higher Order Metric for Evaluating Multi-Object Tracking. Jonathon Luiten, Aljosa Osep, Patrick Dendorfer, Philip Torr, Andreas Geiger, Laura Leal-Taixe, Bastian Leibe. IJCV 2020_ |
+| AMOTA           | This is similar to MOTA, but is averaged over all recall thresholds to consider the confidence of predicted tracks. For more information, please check out _3D Multi-Object Tracking: A Baseline and New Evaluation Metrics. Xinshuo Weng, Jianren Wang, David Held, Kris Kitani. IROS 2020_                                                                                                                                                             |
+
 We can run tracking evaluation using the following code snippet. 
 ```bash 
 from av2.evaluation.tracking.eval import evaluate
@@ -280,6 +287,15 @@ with open("forecast_predictions.pkl", "wb") as f:
 ```
 
 ### Forecasting Evaluation
+
+| **Metric Name** | **Description**                                                                                                                                                                                                                                                                                                                                                                          |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Forecasting mAP | This is similar to mAP, but we define a true positive with reference to the current frame T if there is a positive match in both the current timestamp T and the future (final) timestep T+N . Importantly, unlike ADE and FDE, this metric considers both true positive and false positive trajectories. We average Forecasting AP over static, linear, and non-linearly moving cohorts |
+| ADE             | The average L2 distance between the best forecasted trajectory and the ground truth. The best here refers to the trajectory that has the minimum endpoint error. We average ADE over static, linear, and non-linearly moving cohorts.                                                                                                                                                    |
+| FDE             | The L2 distance between the endpoint of the best forecasted trajectory and the ground truth. The best here refers to the trajectory that has the minimum endpoint error. We average FDE over static, linear, and non-linearly moving cohorts.                                                                                                                                            |
+
+For more information about these metrics, please check out _Forecasting from LiDAR via Future Object Detection. Neehar Peri, Jonothan Luitein, Mengtian Li, Aljosa Osep, Laura Leal-Taixe, Deva Ramanan. CVPR 2022_
+
 We can run forecasting evaluation using the following code snippet. 
 ```bash 
 from av2.evaluation.forecasting.eval import evaluate
@@ -290,3 +306,20 @@ res =  evaluate(forecasts, labels, top_k, ego_distance_threshold, dataset_dir)
 - `top_k`: Top K evaluation of multi-future forecasts (default is 5)
 - `ego_distance_threshold`: Filter for all detections outside of ego_distance_threshold  (default is 50).
 - `dataset_dir`: Path to dataset directory (e.g. data/Sensor/val)
+
+If you participate in this challenge, please consider citing:
+
+    @article{peri2022futuredet,
+      title={Forecasting from LiDAR via Future Object Detection},
+      author={Peri, Neehar and Luiten, Jonathon and Li, Mengtian and Osep, Aljosa and Leal-Taixe, Laura and Ramanan, Deva},
+      journal={CVPR},
+      year={2022},
+    }
+    
+     @article{peri2022towards,
+      title={Towards Long Tailed 3D Detection},
+      author={Peri, Neehar and Dave, Achal and Ramanan, Deva, and Kong, Shu},
+      journal={CoRL},
+      year={2022},
+    }
+    
