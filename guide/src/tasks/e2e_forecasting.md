@@ -10,10 +10,11 @@ Object detection and forecasting are fundamental components of embodied percepti
 
 To this end, our proposed benchmark will be the first to evaluate end-to-end perception on 26 classes defined by the AV2 ontology. Specifically, we will repurpose the AV2 sensor dataset, which has track annotations for 26 object categories, for end-to-end perception: for each timestep in a given sensor sequence, algorithms will have access to all prior frames and must produce tracks for all past sensor sweeps, detections for the current timestep, and forecasted trajectories for the next 3 s. This challenge is different from the Motion Forecasting challenge because we do not provide ground truth tracks as input, requiring algorithms to process raw sensor data. Our primary evaluation metric is Forecasting Average Precision, a joint detection and forecasting metric that computes performance averaged over static, linear, and nonlinearly moving cohorts. Unlike standard motion forecasting evaluation, end-to-end perception must consider both true positive and false positive predictions.
 
-### Quick Start Guide 
-Check out our baselines [here](https://github.com/neeharperi/LT3D)
+## Baselines
 
-# End-to-End Forecasting Taxonomy
+- [https://github.com/neeharperi/LT3D](https://github.com/neeharperi/LT3D)
+
+## End-to-End Forecasting Taxonomy
 
 1. `REGULAR_VEHICLE`:
 Any conventionally sized passenger vehicle used for the transportation of people and cargo. This includes Cars, vans, pickup trucks, SUVs, etc.
@@ -307,19 +308,24 @@ res =  evaluate(forecasts, labels, top_k, ego_distance_threshold, dataset_dir)
 - `ego_distance_threshold`: Filter for all detections outside of ego_distance_threshold  (default is 50).
 - `dataset_dir`: Path to dataset directory (e.g. data/Sensor/val)
 
+## Supporting Publications
+
 If you participate in this challenge, please consider citing:
 
-    @article{peri2022futuredet,
-      title={Forecasting from LiDAR via Future Object Detection},
-      author={Peri, Neehar and Luiten, Jonathon and Li, Mengtian and Osep, Aljosa and Leal-Taixe, Laura and Ramanan, Deva},
-      journal={CVPR},
-      year={2022},
-    }
-    
-     @article{peri2022towards,
-      title={Towards Long Tailed 3D Detection},
-      author={Peri, Neehar and Dave, Achal and Ramanan, Deva, and Kong, Shu},
-      journal={CoRL},
-      year={2022},
-    }
-    
+```BibTeX
+@INPROCEEDINGS {peri2022futuredet,
+  title={Forecasting from LiDAR via Future Object Detection},
+  author={Peri, Neehar and Luiten, Jonathon and Li, Mengtian and Osep, Aljosa and Leal-Taixe, Laura and Ramanan, Deva},
+  journal={CVPR},
+  year={2022},
+}
+```
+
+```BibTeX 
+@INPROCEEDINGS {peri2022towards,
+  title={Towards Long Tailed 3D Detection},
+  author={Peri, Neehar and Dave, Achal and Ramanan, Deva, and Kong, Shu},
+  journal={CoRL},
+  year={2022},
+}
+```
