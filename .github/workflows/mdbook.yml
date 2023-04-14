@@ -36,7 +36,8 @@ jobs:
           rustup update
       - name: Install mdbook.
         run: |
-          cargo install mdbook --no-default-features --features search
+          mkdir bin
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.28/mdbook-v0.4.28-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
       - name: Install mdbook-katex.
         run: |
           cargo install mdbook-katex
@@ -50,7 +51,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v3
       - name: Build with mdBook
-        run: mdbook build guide
+        run: bin/mdbook build guide
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
