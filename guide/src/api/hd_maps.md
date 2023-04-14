@@ -2,8 +2,8 @@
 # HD Maps
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/29715011/157915615-42fa04ff-86f7-407e-bf3a-743e127aec0b.jpg" height="300">
-  <img src="https://user-images.githubusercontent.com/29715011/157915595-b8c4a627-49fb-4f52-b375-0aa81593eac7.jpg" height="300">
+  <img src="../assets/157915615-42fa04ff-86f7-407e-bf3a-743e127aec0b.avif" height="300">
+  <img src="../assets/157915595-b8c4a627-49fb-4f52-b375-0aa81593eac7.avif" height="300">
 </p>
 
 ## Table of Contents
