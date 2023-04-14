@@ -1,8 +1,7 @@
 # Summary
 
-# User Guide
+[Argoverse 2](./argoverse_2.md)
 
-- [Introduction](./introduction.md)
 - [Getting Started](./getting_started.md)
 - [Datasets](./datasets/README.md)
     - [Sensor](./datasets/sensor.md)
@@ -20,5 +19,6 @@
 - [HD Maps](./api/hd_maps.md)
 
 # Miscellaneous
+- [Contact](./contact.md)
 - [Contributing](./contributing.md)
 - [Terms & Conditions](./terms_and_conditions.md)
