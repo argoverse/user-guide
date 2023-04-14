@@ -60,7 +60,7 @@ The evaluation expects a dictionary of lists of dictionaries
                   "score": <score>,
                   "label": <label>,
                   "name": <name>,
-                  "translation_m": <translation_m>,
+                  "translation": <translation>,
                   "size": <size>,
                   "yaw": <yaw>,
                   "velocity": <velocity>,
@@ -75,7 +75,7 @@ The evaluation expects a dictionary of lists of dictionaries
 - `score`: Track confidence.
 - `label`: Integer index of the object class.
 - `name`: Object class name.
-- `translation_m`: xyz-components of the object translation in the city reference frame, in meters.
+- `translation`: xyz-components of the object translation in the city reference frame, in meters.
 - `size`: Object extent along the x,y,z axes in meters.
 - `yaw`: Object heading rotation along the z axis.
 - `velocity`: Object veloicty along the x,y,z axes.
@@ -91,7 +91,7 @@ example_tracks = {
   '02678d04-cc9f-3148-9f95-1ba66347dff9': [
     {
        'timestamp_ns': 315969904359876000,
-       'translation_m': array([[6759.51786422, 1596.42662849,   57.90987307],
+       'translation': array([[6759.51786422, 1596.42662849,   57.90987307],
              [6757.01580393, 1601.80434654,   58.06088218],
              [6761.8232099 , 1591.6432147 ,   57.66341136],
              ...,
@@ -145,12 +145,12 @@ with open("track_predictions.pkl", "wb") as f:
 We can run tracking evaluation using the following code snippet. 
 ```bash 
 from av2.evaluation.tracking.eval import evaluate
-res =  evaluate(track_predictions, labels, objective_metric, ego_distance_threshold_m, dataset_dir, outputs_dir)
+res =  evaluate(track_predictions, labels, objective_metric, ego_distance_threshold, dataset_dir, outputs_dir)
 ```
 - `track_predictions`: Track predictions
 - `labels`: Ground truth annotations
 - `objective_metric`: Metric to optimize per-class recall (e.g. HOTA, MOTA, default is HOTA)
-- `ego_distance_threshold_m`: Filter for all detections outside of `ego_distance_threshold_m` (default is 50 meters).
+- `ego_distance_threshold`: Filter for all detections outside of `ego_distance_threshold` (default is 50 meters).
 - `dataset_dir`: Path to dataset directory (e.g. data/Sensor/val)
 - `outputs_dir`: Path to output directory
 
@@ -169,7 +169,7 @@ The evaluation expects a dictionary of dictionaries of lists of dictionaries
          "score": <score>
          "detection_score": <detection_score>,
          "instance_id": <instance_id>
-         "current_translation_m": <current_translation_m>,
+         "current_translation": <current_translation>,
          "label": <label>,
          "name": <name>,
          "size": <size>,
@@ -185,7 +185,7 @@ The evaluation expects a dictionary of dictionaries of lists of dictionaries
 - `score`: Forecast confidence.
 - `detection_score`: Detection confidence.
 - `instance_id`: Unique id assigned to each object.
-- `current_translation_m`: xyz-components of the object translation in the city reference frame at the current timestamp, in meters.
+- `current_translation`: xyz-components of the object translation in the city reference frame at the current timestamp, in meters.
 - `label`: Integer index of the object class.
 - `name`: Object class name.
 - `size`: Object extent along the x,y,z axes in meters.
@@ -198,7 +198,7 @@ example_forecasts = {
   '02678d04-cc9f-3148-9f95-1ba66347dff9': {
     315969904359876000: [
       {'timestep_ns': 315969905359854000,
-      'current_translation_m': array([6759.4230302 , 1596.38016309]),
+      'current_translation': array([6759.4230302 , 1596.38016309]),
       'detection_score': 0.54183,
       'size': array([4.4779487, 1.7388916, 1.6963532], dtype=float32),
       'label': 0,
@@ -261,12 +261,12 @@ We show how to run the forecasting evaluation below:
 ```python 
 from av2.evaluation.forecasting.eval import evaluate
 
-res = evaluate(forecasts, labels, top_k, ego_distance_threshold_m, dataset_dir)
+res = evaluate(forecasts, labels, top_k, ego_distance_threshold, dataset_dir)
 ```
 - `forecasts`: Forecast predictions
 - `labels`: Ground truth annotations
 - `top_k`: Top K evaluation of multi-future forecasts (default is 5)
-- `ego_distance_threshold_m`: Filter for all detections outside of `ego_distance_threshold_m` (default is 50 meters).
+- `ego_distance_threshold`: Filter for all detections outside of `ego_distance_threshold` (default is 50 meters).
 - `dataset_dir`: Path to dataset directory (e.g. data/Sensor/val)
 
 ## Supporting Publications
