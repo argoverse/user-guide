@@ -290,22 +290,28 @@ with open("forecast_predictions.pkl", "wb") as f:
 ### Forecasting Evaluation
 
 | **Metric Name** | **Description**                                                                                                                                                                                                                                                                                                                                                                          |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Forecasting mAP | This is similar to mAP, but we define a true positive with reference to the current frame T if there is a positive match in both the current timestamp T and the future (final) timestep T+N . Importantly, unlike ADE and FDE, this metric considers both true positive and false positive trajectories. We average Forecasting AP over static, linear, and non-linearly moving cohorts |
-| ADE             | The average L2 distance between the best forecasted trajectory and the ground truth. The best here refers to the trajectory that has the minimum endpoint error. We average ADE over static, linear, and non-linearly moving cohorts.                                                                                                                                                    |
-| FDE             | The L2 distance between the endpoint of the best forecasted trajectory and the ground truth. The best here refers to the trajectory that has the minimum endpoint error. We average FDE over static, linear, and non-linearly moving cohorts.                                                                                                                                            |
+|:-----------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| $\text{mAP}_{\text{forecasting}}$ | This is similar to $\text{mAP}$, but we define a true positive with reference to the current frame $T$ if there is a positive match in both the current timestamp $T$ and the future (final) timestep $T + N$ . Importantly, unlike $\text{ADE}$ and $\text{FDE}$, this metric considers both true positive and false positive trajectories. We average $\text{AP}_\text{forecasting}$ over static, linear, and non-linearly moving cohorts. |
+| $\text{ADE}$                      | The average $\ell_2$ distance between the best forecasted trajectory and the ground truth. The best here refers to the trajectory that has the minimum endpoint error. We average $\text{ADE}$ over static, linear, and non-linearly moving cohorts.                                                                                                                                                                                                  |
+| $\text{FDE}$                      | The $\ell_2$ distance between the endpoint of the best forecasted trajectory and the ground truth. The best here refers to the trajectory that has the minimum endpoint error. We average $\text{FDE}$ over static, linear, and non-linearly moving cohorts.                                                                                                                                                                                          |
 
-For more information about these metrics, please check out _Forecasting from LiDAR via Future Object Detection. Neehar Peri, Jonothan Luitein, Mengtian Li, Aljosa Osep, Laura Leal-Taixe, Deva Ramanan. CVPR 2022_
+```admonish info
+For additional information, please see:
 
-We can run forecasting evaluation using the following code snippet. 
-```bash 
+[_Forecasting from LiDAR via Future Object Detection. Neehar Peri, Jonothan Luitein, Mengtian Li, Aljosa Osep, Laura Leal-Taixe, Deva Ramanan. CVPR 2022_](https://arxiv.org/abs/2203.16297)
+```
+
+We show how to run the forecasting evaluation below:
+
+```python 
 from av2.evaluation.forecasting.eval import evaluate
-res =  evaluate(forecasts, labels, top_k, ego_distance_threshold, dataset_dir)
+
+res = evaluate(forecasts, labels, top_k, ego_distance_threshold_m, dataset_dir)
 ```
 - `forecasts`: Forecast predictions
 - `labels`: Ground truth annotations
 - `top_k`: Top K evaluation of multi-future forecasts (default is 5)
-- `ego_distance_threshold`: Filter for all detections outside of ego_distance_threshold  (default is 50).
+- `ego_distance_threshold_m`: Filter for all detections outside of `ego_distance_threshold_m` (default is 50 meters).
 - `dataset_dir`: Path to dataset directory (e.g. data/Sensor/val)
 
 ## Supporting Publications
