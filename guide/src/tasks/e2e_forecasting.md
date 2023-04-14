@@ -189,12 +189,12 @@ with open("track_predictions.pkl", "wb") as f:
 We can run tracking evaluation using the following code snippet. 
 ```bash 
 from av2.evaluation.tracking.eval import evaluate
-res =  evaluate(track_predictions, labels, objective_metric, ego_distance_threshold, dataset_dir, outputs_dir)
+res =  evaluate(track_predictions, labels, objective_metric, ego_distance_threshold_m, dataset_dir, outputs_dir)
 ```
 - `track_predictions`: Track predictions
 - `labels`: Ground truth annotations
 - `objective_metric`: Metric to optimize per-class recall (e.g. HOTA, MOTA, default is HOTA)
-- `ego_distance_threshold`: Filter for all detections outside of ego_distance_threshold  (default is 50).
+- `ego_distance_threshold_m`: Filter for all detections outside of `ego_distance_threshold_m` (default is 50 meters).
 - `dataset_dir`: Path to dataset directory (e.g. data/Sensor/val)
 - `outputs_dir`: Path to output directory
 
