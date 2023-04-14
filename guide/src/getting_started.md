@@ -10,21 +10,28 @@ If you would like to take advantage of the most recent features, please install 
 
 ## Overview
 
-In this section, we outline the following:
+This section covers the following:
 
-1. Installing the supporting API, `av2`, for the Argoverse 2 and TbV family of datasets.
-2. Downloading the datasets to your local machine or server.
+1. Installing `av2`.
+2. Downloading the Argoverse 2 and TbV datasets.
 
 ## Setup
 
 We _highly_ recommend using `conda` with the `conda-forge` channel for package management.
 
-### Install `conda`
+### Installing via `conda` (recommended)
 
-You will need to install `conda` on your machine. We recommend to install the `conda-forge` version of `conda` found at [https://github.com/conda-forge/miniforge#install](). You may need to run a post-install step to initialize `conda`:
+You will need to install `conda` on your machine. We recommend installing [miniforge](https://github.com/conda-forge/miniforge#install):
 
-```terminal
-$(which conda) init $SHELL
+```bash
+wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3.sh -bp "${HOME}/conda"
+```
+
+Then, install `av2`:
+
+```bash
+bash conda/install.sh && conda activate av2
 ```
 
 ~~~admonish note
@@ -37,20 +44,25 @@ $(which conda) init $SHELL
 If `conda` is not found, you will need to add the binary to your `PATH` environment variable.
 ~~~
 
-### Install `av2`
+### Installing via pip
 
-In your terminal emulator run,
+Installation via PyPI requires manually installing Rust via [rustup](https://rustup.rs/).
 
-```bash
-bash conda/install.sh
+Run the following and select the _default_ installation:
+
+```terminal
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-which will install _all_ of the necessary dependencies in a conda environment named `av2`.
+Make sure to adjust your `PATH` as:
+```terminal
+export PATH=$HOME/.cargo/bin:$PATH
+```
 
-To activate your environment (i.e., update your system paths), run:
+Then, install `av2`:
 
 ```bash
-conda activate av2
+pip install git+https://github.com/argoverse/av2-api#egg=av2
 ```
 
 ## Downloading the data
