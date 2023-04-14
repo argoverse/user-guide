@@ -19,6 +19,7 @@
 - [HD Maps](./api/hd_maps.md)
 
 # Miscellaneous
+- [Citing](./citing.md)
 - [Contact](./contact.md)
 - [Contributing](./contributing.md)
 - [Terms & Conditions](./terms_and_conditions.md)
