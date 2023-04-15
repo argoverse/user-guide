@@ -2,8 +2,8 @@
 # HD Maps
 
 <p align="center">
-  <img src="../assets/157915615-42fa04ff-86f7-407e-bf3a-743e127aec0b.avif" height="300">
-  <img src="../assets/157915595-b8c4a627-49fb-4f52-b375-0aa81593eac7.avif" height="300">
+  <img src="../assets/157915615-42fa04ff-86f7-407e-bf3a-743e127aec0b.avif" height="350">
+  <img src="../assets/157915595-b8c4a627-49fb-4f52-b375-0aa81593eac7.avif" height="350">
 </p>
 
 ## Table of Contents
@@ -37,7 +37,7 @@ The core data structure that holds Argoverse 2 map data is the [`ArgoverseStatic
 The core feature of the HD map is the lane graph, consisting of a graph $G = (V, E)$, where $V$ are individual lane segments. In the [supplemental material](https://openreview.net/attachment?id=vKQGe36av4k&name=supplementary_material), we enumerate and define the attributes we provide for each lane segment. Unlike Argoverse 1, we provide the actual 3D lane boundaries, instead of only centerlines. However, our API provides code to quickly infer the centerlines at any desired sampling resolution. Polylines are quantized to $1 \text{ cm}$ resolution in the release.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/29715011/157802162-e40098c1-8677-4c16-ac60-e9bbded6badf.png" height="300">
+  <img src="../assets/157802162-e40098c1-8677-4c16-ac60-e9bbded6badf.avif">
 </p>
 
 These vector map files are provided as JSON, e.g. `log_map_archive_00a6ffc1-6ce9-3bc3-a060-6006e9893a1a____PIT_city_31785.json`
@@ -63,11 +63,6 @@ Please refer to the [`LaneSegment`](lane_segment.py#L71) class, with the followi
 - `successors`: unique identifiers of lane segments that represent successor of this object. Note: this list will be empty if no successors exist.
 - `right_neighbor_id`: unique identifier of the lane segment representing this object's right neighbor.
 - `left_neighbor_id`: unique identifier of the lane segment representing this object's left neighbor.
-
-<!-- <p align="center">
-  <img src="https://user-images.githubusercontent.com/29715011/157915615-42fa04ff-86f7-407e-bf3a-743e127aec0b.jpg" height="500">
-  <img src="https://user-images.githubusercontent.com/29715011/157915595-b8c4a627-49fb-4f52-b375-0aa81593eac7.jpg" height="500">
-</p> -->
 
 <a name="drivable-area"></a>
 
@@ -103,7 +98,7 @@ Each scenario’s local map includes all entities found within a $100 \text{ m}$
 Only the AV2 Sensor Dataset and TbV includes a dense ground surface height map. (The AV2 LiDAR dataset and AV2 Motion Forecasting (MF) datasets **do not** come up with raster maps, but still have sparse 3D height information on polylines).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/29715011/157802151-1eecfb9f-1e3f-4639-a417-a245d9898b1e.png" height="300">
+  <img src="../assets/157802151-1eecfb9f-1e3f-4639-a417-a245d9898b1e.avif">
 </p>
 
 Ground surface height is provided for areas within a 5 m isocontour of the drivable area boundary, which we define as the region of interest (ROI). We do so because the notion of ground surface height is ill-defined for the interior of buildings and interior of densely constructed city blocks, areas where ground vehicles cannot observe due to occlusion. The raster grid is quantized to a 30 cm resolution, a higher resolution than the 1 m resolution in Argoverse 1.
