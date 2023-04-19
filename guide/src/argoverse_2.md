@@ -25,7 +25,7 @@ The data in Argoverse 2 comes from six U.S. cities with complex, unique driving 
 We collected all of our data using a fleet of identical Ford Fusion Hybrids, fully integrated with Argo AI self-driving technology. We include data from two lidar sensors, seven ring cameras, and two front-facing stereo cameras. All sensors are roof-mounted:
 
 <p align="center">
-  <img src="assets/av2_vehicle.avif" height="300">
+  <img src="assets/av2_vehicle.avif">
 </p>
 
 ### Lidar
