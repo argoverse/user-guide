@@ -1,7 +1,7 @@
 # Introduction
 
 <p align="center">
-  <img src="assets/157802162-e40098c1-8677-4c16-ac60-e9bbded6badf.avif" height="300">
+  <img src="assets/157802162-e40098c1-8677-4c16-ac60-e9bbded6badf.avif">
 </p>
 
 **Argoverse 2** is a collection of open-source autonomous driving data and high-definition (HD) maps from six U.S. cities: Austin, Detroit, Miami, Pittsburgh, Palo Alto, and Washington, D.C. This release builds upon the initial launch of [Argoverse](https://arxiv.org/abs/1911.02620), which was among the first data releases of its kind to include HD maps for machine learning and computer vision research.
