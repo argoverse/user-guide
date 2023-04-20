@@ -37,9 +37,9 @@ ny surface. We will refer to this as the expected depth along the given ray orig
 
 ## Getting Started
 
-To get started with training your own models for this task on Argoverse 2.0, you can follow the instructions below:
+To get started with training your own models for this task on Argoverse 2, you can follow the instructions below:
 
-- Download the Argoverse 2.0 [Sensor dataset](https://www.argoverse.org/av2.html#sensor-link) from our [website](https://www.argoverse.org/index.html). Technically the LiDAR dataset is the best suited for this self-supervised task as it is much larger than any of our other datasets and can be used to learn generic priors at scale but it can be too big to get started with.
+- Download the Argoverse 2 [Sensor dataset](https://www.argoverse.org/av2.html#sensor-link) from our [website](https://www.argoverse.org/index.html). Technically the LiDAR dataset is the best suited for this self-supervised task as it is much larger than any of our other datasets and can be used to learn generic priors at scale but it can be too big to get started with.
 - Check out an Argoverse dataloader implementation for this task provided [here](https://github.com/tarashakhurana/4d-occ-forecasting/blob/main/cvpr23-evalkit/data/av2.py). A sample script [here](https://github.com/tarashakhurana/4d-occ-forecasting/blob/main/cvpr23-evalkit/load_sequences.py) shows how to use this dataloader.
 - Build your own 4D occupancy forecasting model with your choice of the occupancy representation! Some people like voxels, some even like point clouds (aka the line of work on point cloud forecasting), and some like NeRFs! Two reference baselines for this task are provided in a [recent work](https://github.com/tarashakhurana/4d-occ-forecasting).
 - Evaluate your forecasts. See below for a script that does local evaluation.
@@ -52,7 +52,7 @@ One could also use point clouds as a representation of occupancy. Therefore, for
 
 ## CVPR '23 Challenge
 
-Once you have a working model, you can submit the results from your model in the first iteration of the [Argoverse 2.0 4D Occupancy challenge](https://eval.ai/web/challenges/challenge-page/1977/overview) being hosted as a part of the Workshop on Autonomous Driving at CVPR '23. First, generate the set of query rays from the [eval-kit](https://github.com/tarashakhurana/4d-occ-forecasting/tree/main/cvpr23-evalkit). For each query ray, you will submit an expected distance along that ray as defined above. The format of the JSON that will be created as query will look like the following:
+Once you have a working model, you can submit the results from your model in the first iteration of the [Argoverse 2 4D Occupancy challenge](https://eval.ai/web/challenges/challenge-page/1977/overview) being hosted as a part of the Workshop on Autonomous Driving at CVPR '23. First, generate the set of query rays from the [eval-kit](https://github.com/tarashakhurana/4d-occ-forecasting/tree/main/cvpr23-evalkit). For each query ray, you will submit an expected distance along that ray as defined above. The format of the JSON that will be created as query will look like the following:
 
 ```
 {
