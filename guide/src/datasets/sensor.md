@@ -1,10 +1,7 @@
 # Sensor Dataset
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/29715011/158742778-557f31a4-569d-44aa-a032-99836094dc97.gif" height="225">
-  <img src="https://user-images.githubusercontent.com/29715011/158742776-069501c4-8dd4-4f9d-ac8c-f0421f855607.gif" height="225">
-  <img src="https://user-images.githubusercontent.com/29715011/158739736-fe876299-23da-46ed-98ce-173f938d1702.gif" height="225">
-  <img src="https://user-images.githubusercontent.com/29715011/158739767-886e1c2f-4613-495d-9204-a7b4813af16d.gif" height="225">
+  <img src="../assets/158742778-557f31a4-569d-44aa-a032-99836094dc97.gif" style="width: auto; height: auto;">
 </div>
 
 ## Table of Contents
