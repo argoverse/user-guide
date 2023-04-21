@@ -8,6 +8,10 @@
 
 The Argoverse 3D Object Detection task differentiates itself with its **26** category taxonomy and **long-range** (150 m) detection evaluation. We detail the task, metrics, evaluation protocol, and detailed object taxonomy information below.
 
+## Baselines
+
+- [https://github.com/benjaminrwilson/torchbox3d](https://github.com/benjaminrwilson/torchbox3d)
+- [https://github.com/neeharperi/LT3D](https://github.com/neeharperi/LT3D)
 
 ## Task Definition
 
