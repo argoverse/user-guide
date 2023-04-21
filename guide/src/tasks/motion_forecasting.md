@@ -67,8 +67,8 @@ Each track is also assigned one of the following labels, as part of the 10-class
   - `RIDERLESS_BICYCLE`
 - `UNKNOWN`
 
-For more additional details regarding the data schema, please refer [here](data_schema.py).
+For more additional details regarding the data schema, please refer [here](https://github.com/argoverse/av2-api/blob/main/src/av2/datasets/motion_forecasting/data_schema.py).
 
 ## Visualization
 
-Motion forecasting scenarios can be visualized using the viz [`script`](../../../../tutorials/generate_forecasting_scenario_visualizations.py) or by calling the viz [`library`](viz/scenario_visualization.py#L48) directly.
+Motion forecasting scenarios can be visualized using the viz [`script`](https://github.com/argoverse/av2-api/tree/main/tutorials/generate_forecasting_scenario_visualizations.py) or by calling the viz [`library`](https://github.com/argoverse/av2-api/blob/main/src/av2/datasets/motion_forecasting/viz/scenario_visualization.py#L48) directly.
