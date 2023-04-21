@@ -63,7 +63,7 @@ The evaluation expects a dictionary of lists of dictionaries
                   "translation_m": <translation_m>,
                   "size": <size>,
                   "yaw": <yaw>,
-                  "velocity": <velocity>,
+                  "velocity_m_per_s": <velocity_m_per_s>,
             }
       ]
 }
@@ -78,7 +78,7 @@ The evaluation expects a dictionary of lists of dictionaries
 - `translation_m`: xyz-components of the object translation in the city reference frame, in meters.
 - `size`: Object extent along the x,y,z axes in meters.
 - `yaw`: Object heading rotation along the z axis.
-- `velocity`: Object veloicty along the x,y,z axes.
+- `velocity_m_per_s`: Object veloicty along the x,y,z axes.
 
 An example looks like this:
 
@@ -106,7 +106,7 @@ example_tracks = {
              [1.4323177 , 0.79862624, 1.5229694 ],
              [0.7979312 , 0.6317313 , 1.4602867 ]], dtype=float32),
       'yaw': array([-1.1205611 , ... , -1.1305285 , -1.1272993], dtype=float32),
-      'velocity': array([[ 2.82435445e-03, -8.80148250e-04, -1.52388044e-04],
+      'velocity_m_per_s': array([[ 2.82435445e-03, -8.80148250e-04, -1.52388044e-04],
              [ 1.73744695e-01, -3.48345393e-01, -1.52417628e-02],
              [ 7.38469649e-02, -1.16846527e-01, -5.85577238e-03],
              ...,
