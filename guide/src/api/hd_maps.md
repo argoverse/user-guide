@@ -28,7 +28,7 @@ Argoverse 2 offers a massive number of highly diverse HD maps:
 - **LiDAR Dataset**: 20,000 vector maps.
 - **TbV Dataset**: 1,038 vector maps and 1,038 ground height raster maps.
 
-The core data structure that holds Argoverse 2 map data is the [`ArgoverseStaticMap`](map_api.py#280) class. Please refer to the [map tutorial notebook](https://github.com/argoverse/av2-api/blob/main/tutorials/map_tutorial.ipynb) for more examples of how to use the map API.
+The core data structure that holds Argoverse 2 map data is the [`ArgoverseStaticMap`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/map_api.py#280) class. Please refer to the [map tutorial notebook](https://github.com/argoverse/av2-api/blob/main/tutorials/map_tutorial.ipynb) for more examples of how to use the map API.
 
 <a name="lane-segments"></a>
 
@@ -50,14 +50,14 @@ log_map_dirpath = Path("av2") / "00a6ffc1-6ce9-3bc3-a060-6006e9893a1a" / "map"
 avm = ArgoverseStaticMap.from_map_dir(log_map_dirpath=log_map_dirpath, build_raster=False)
 ```
 
-Please refer to the [`LaneSegment`](lane_segment.py#L71) class, with the following attributes:
+Please refer to the [`LaneSegment`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/lane_segment.py#L71) class, with the following attributes:
 
 - `id`: unique identifier for this lane segment (guaranteed to be unique only within this local map).
 - `is_intersection`: boolean value representing whether or not this lane segment lies within an intersection.
 - `lane_type`: designation of which vehicle types may legally utilize this lane for travel (see [`LaneType`](lane_segment.py#L23)).
-- `right_lane_boundary`: 3D polyline representing the right lane boundary (see [`Polyline`](map_primitives.py#L37)).
+- `right_lane_boundary`: 3D polyline representing the right lane boundary (see [`Polyline`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/map_primitives.py#L37)).
 - `left_lane_boundary`: 3D polyline representing the left lane boundary.
-- `right_mark_type`: type of painted marking found along the right lane boundary (see [`LaneMarkType`](lane_segment.py#L31)).
+- `right_mark_type`: type of painted marking found along the right lane boundary (see [`LaneMarkType`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/lane_segment.py#L31)).
 - `left_mark_type`: type of painted marking found along the left lane boundary.
 - `predecessors`: unique identifiers of lane segments that are predecessors of this object.
 - `successors`: unique identifiers of lane segments that represent successor of this object. Note: this list will be empty if no successors exist.
@@ -70,7 +70,7 @@ Please refer to the [`LaneSegment`](lane_segment.py#L71) class, with the followi
 
 Instead of providing drivable area segmentation in a rasterized format, as we did in Argoverse 1, we release it in a vector format  (i.e. as 3D polygons). This offers multiple advantages, chiefly in compression - allowing us to store separate maps for tens of thousands of scenarios, while ensuring that the raster format is still easily derivable. The polygon vertices are quantized to 1 cm resolution.
 
-Please refer to the [`DrivableArea`](drivable_area.py#L17) class, with the following attributes:
+Please refer to the [`DrivableArea`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/drivable_area.py#L17) class, with the following attributes:
 
 - `id`: unique identifier.
 - `area_boundary`: 3D vertices of polygon, representing the drivable area's boundary.
@@ -81,7 +81,7 @@ Please refer to the [`DrivableArea`](drivable_area.py#L17) class, with the follo
 
 These entities represent crosswalks, and are provided in vector format. They are parameterized by two edges along a principal axis. Both lines should be pointing in nominally the same direction and a pedestrian is expected to move either roughly parallel to both lines or anti-parallel to both lines.
 
-Please refer to the [`PedestrianCrossing`](pedestrian_crossing.py#L17) class, with the following attributes:
+Please refer to the [`PedestrianCrossing`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/pedestrian_crossing.py#L17) class, with the following attributes:
 
 - `id`: unique identifier of pedestrian crossing.
 - `edge1`: 3D polyline representing one edge of the crosswalk, with 2 waypoints.
