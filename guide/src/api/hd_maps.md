@@ -54,7 +54,7 @@ Please refer to the [`LaneSegment`](https://github.com/argoverse/av2-api/blob/ma
 
 - `id`: unique identifier for this lane segment (guaranteed to be unique only within this local map).
 - `is_intersection`: boolean value representing whether or not this lane segment lies within an intersection.
-- `lane_type`: designation of which vehicle types may legally utilize this lane for travel (see [`LaneType`](lane_segment.py#L23)).
+- `lane_type`: designation of which vehicle types may legally utilize this lane for travel (see [`LaneType`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/lane_segment.py#L23)).
 - `right_lane_boundary`: 3D polyline representing the right lane boundary (see [`Polyline`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/map_primitives.py#L37)).
 - `left_lane_boundary`: 3D polyline representing the left lane boundary.
 - `right_mark_type`: type of painted marking found along the right lane boundary (see [`LaneMarkType`](https://github.com/argoverse/av2-api/blob/main/src/av2/map/lane_segment.py#L31)).
