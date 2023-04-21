@@ -28,7 +28,7 @@ Argoverse 2 offers a massive number of highly diverse HD maps:
 - **LiDAR Dataset**: 20,000 vector maps.
 - **TbV Dataset**: 1,038 vector maps and 1,038 ground height raster maps.
 
-The core data structure that holds Argoverse 2 map data is the [`ArgoverseStaticMap`](map_api.py#280) class. Please refer to the [map tutorial notebook](../../../tutorials/map_tutorial.ipynb) for more examples of how to use the map API.
+The core data structure that holds Argoverse 2 map data is the [`ArgoverseStaticMap`](map_api.py#280) class. Please refer to the [map tutorial notebook](https://github.com/argoverse/av2-api/blob/main/tutorials/map_tutorial.ipynb) for more examples of how to use the map API.
 
 <a name="lane-segments"></a>
 
