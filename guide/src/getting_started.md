@@ -59,7 +59,7 @@ Make sure to adjust your `PATH` as:
 export PATH=$HOME/.cargo/bin:$PATH
 ```
 
-We use the `nightly` release of Rust for SIMD support. Set it as your toolchain:
+We use the `nightly` release of Rust for SIMD support. Set it as your default toolchain:
 ```terminal
 rustup default nightly
 ```
