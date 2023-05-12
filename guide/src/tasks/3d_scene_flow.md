@@ -27,7 +27,7 @@ The purpose of the task is to produce two outputs. As described above, the main 
 
 ## Data Loading
 
-Once the Sensor Dataset is set up (see [these instructions](https://github.com/argoverse/av2-api/blob/main/src/av2/datasets/sensor/README.md)), you can use the `SceneFlowDataloader` to load pairs of sweeps along with all the auxiliary information (poses and ground annotations) and flow annotations. The data loader can be found in `av2.torch.data_loaders.scene_flow`, and documentation can be found in the [source code](https://github.com/argoverse/av2-api/blob/main/src/av2/torch/data_loaders/scene_flow.py).
+Once the Sensor Dataset is set up (see [these instructions](https://argoverse.github.io/user-guide/getting_started.html#downloading-the-data)), you can use the `SceneFlowDataloader` to load pairs of sweeps along with all the auxiliary information (poses and ground annotations) and flow annotations. The data loader can be found in `av2.torch.data_loaders.scene_flow`, and documentation can be found in the [source code](https://github.com/argoverse/av2-api/blob/main/src/av2/torch/data_loaders/scene_flow.py).
 
 ## Evaluation Point Subset
 
