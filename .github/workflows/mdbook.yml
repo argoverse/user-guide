@@ -43,7 +43,7 @@ jobs:
           cargo install mdbook-katex
       - name: Install mdbook-admonish.
         run: |
-          cargo install mdbook-admonish
+          cargo install mdbook-admonish --locked
       - name: Install mdbook-toc.
         run: |
           cargo install mdbook-toc
