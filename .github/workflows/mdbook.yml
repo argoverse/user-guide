@@ -37,14 +37,14 @@ jobs:
       - name: Install mdbook.
         run: |
           mkdir bin
-          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.28/mdbook-v0.4.28-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.37/mdbook-v0.4.37-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
       - name: Install mdbook-katex.
         run: |
           cargo install mdbook-katex
       - name: Install mdbook-admonish.
         run: |
           cargo install mdbook-admonish
-          mdbook-admonish install guide
+          mdbook-admonish install ./guide/book
       - name: Install mdbook-toc.
         run: |
           cargo install mdbook-toc
