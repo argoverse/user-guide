@@ -14,6 +14,8 @@
     - [4D Occupancy Forecasting](./tasks/4d_occupancy_forecasting.md)
     - [End-to-End Forecasting](./tasks/e2e_forecasting.md)
     - [Motion Forecasting](./tasks/motion_forecasting.md)
+    - [Scenario Mining](./tasks/scenario_mining.md)
+
 
 # API Reference Guide
 - [HD Maps](./api/hd_maps.md)
