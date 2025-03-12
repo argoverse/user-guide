@@ -7,3 +7,4 @@ The Argoverse 2 API has official support for the following tasks:
 - 4D Occupancy Forecasting
 - E2E Forecasting
 - Motion Forecasting
+- Scenario Mining
