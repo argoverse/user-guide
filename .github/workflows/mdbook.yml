@@ -49,7 +49,7 @@ jobs:
           cargo install mdbook-toc
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
       - name: Build with mdBook
         run: bin/mdbook build guide
       - name: Upload artifact
@@ -65,6 +65,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Check Uploaded Artifacts
+        run: ls -al ${{ runner.temp }}/artifact/
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
