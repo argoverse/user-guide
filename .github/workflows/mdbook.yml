@@ -54,14 +54,10 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build with mdBook
         run: mdbook build guide
-      - name: debug
-        run: ls
-      - name: debug2
-        run: ls book
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./book/guide
+          path: ./guide/book
 
   # Deployment job
   deploy:
