@@ -30,14 +30,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install rust.
-        run: |
-          curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
-          rustup update
-      - name: Install mdbook.
-        run: |
-          mkdir bin
-          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.37/mdbook-v0.4.37-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          # mdbook-version: '0.4.45'
+          mdbook-version: 'latest'
       - name: Install mdbook-katex.
         run: |
           cargo install mdbook-katex
@@ -50,12 +52,14 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Build mdBook
+        run: mdbook build
       - name: Build with mdBook
-        run: bin/mdbook build guide
+        run: mdbook build guide
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./guide/book
+          path: ./book/guide
 
   # Deployment job
   deploy:
@@ -65,8 +69,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Check Uploaded Artifacts
-        run: ls -al ${{ runner.temp }}/artifact/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

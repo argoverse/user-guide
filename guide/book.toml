@@ -6,7 +6,7 @@ src = "src"
 title = "Argoverse User Guide"
 
 [output.html]
-curly-quotes = true
+smart-punctuation = true
 mathjax-support = true
 additional-css = ["./mdbook-admonish.css"]
 
