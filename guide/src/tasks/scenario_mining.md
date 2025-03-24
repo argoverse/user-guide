@@ -6,17 +6,24 @@
 
 ## Overview
 
-Autonomous Vehicles (AVs) collect and pseudo-label terabytes of multi-modal data localized to HD maps during normal fleet tests. However, identifying interesting and safety critical scenarios from uncurated data streams is prohibitively time-consuming and error-prone. Although prior works have explored this problem in the context of structured queries and hand-crafted heuristics, we are hosting this challenge to solicit better end-to-end solutions to this important problem.
+Autonomous Vehicles (AVs) collect and pseudo-label terabytes of multi-modal data localized to HD maps during normal fleet tests. However, identifying interesting and safety critical scenarios from uncurated data streams is prohibitively time-consuming and error-prone. Retrieving and processing specific scenarios for ego-behavior evaluation, safety testing, or active learning at scale remains a major challenge. While prior works have explored this problem in the context of structured queries and hand-crafted heuristics, we are hosting this challenge to solicit better end-to-end solutions to this important problem.
 
-To this end, our benchmark includes 10,000 safety-critical natural language queries. Challenge participants can use all RGB frames, Lidar sweeps, HD Maps, and track annotations from the AV2 sensor dataset to find relevant actors in each log. Methods will be evaluated at three levels of spatial and temporal granularity. First, methods must determine if an action (defined by a natural language query) occurs in the log. Next, if the action occurs in the log, methods must temporally localize (e.g. find the start and end time) of the action. Lastly,  methods must detect and track all objects relevant to the text description. Our primary evaluation metric is HOTA-temporal, a tracking metric that jointly considers detection and association accuracy for referred objects.
+Our benchmark includes 10,000 planning-centric natural language queries. Challenge participants can use all RGB frames, Lidar sweeps, HD Maps, and track annotations from the AV2 sensor dataset to find relevant actors in each log. Methods will be evaluated at three levels of spatial and temporal granularity. First, methods must determine if a scenario (defined by a natural language query) occurs in the log. A scenario is a set of objects, actions, map elements, and/or interactions that occur over a specified timeframe. If the scenario occurs in the log, methods must temporally localize (e.g. find the start and end time) the scenario. Lastly, methods must detect and track all objects relevant to the text description. Our primary evaluation metric is HOTA-Temporal, a spatial tracking metric that only considers the scenario objects during the timeframe when the scenario is occuring.
 
+## Downloading Scenario Mining Annotations
+We recommend using the open-source [s5cmd](https://github.com/peak/s5cmd) tool to transfer the data to your local filesystem.
+```
+conda install s5cmd -c conda-forge
+export TARGET_DIR="$HOME/data/datasets/av2_scenario_mining"
+s5cmd --no-sign-request cp "s3://argoverse/tasks/scenario_mining/*" $TARGET_DIR
+```
 
 ## Baselines
 
-- Referential Classification: [https://github.com/CainanD/refbot](https://github.com/CainanD/refbot)
+- Referential Classification: [https://github.com/CainanD/RefAV](https://github.com/CainanD/RefAV) 
 - Tracking: [https://github.com/neeharperi/LT3D](https://github.com/neeharperi/LT3D/tree/main)
 
-## Scenario Mining Taxonomy
+## Scenario Mining Categories
 
 | **Category** | **Description** |
 |:-----------------|:----------------|
@@ -27,7 +34,8 @@ To this end, our benchmark includes 10,000 safety-critical natural language quer
 
 ### Submission Format 
 
-The evaluation expects a dictionary of lists of dictionaries
+
+The submission site and leaderboard are hosted at [EvalAI](https://eval.ai/web/challenges/challenge-page/2469/overview). You are required to submit a .pkl file. The evaluation expects a dictionary of lists of dictionaries
 
 ```python
 {
@@ -41,7 +49,6 @@ The evaluation expects a dictionary of lists of dictionaries
                   "translation_m": <translation_m>,
                   "size": <size>,
                   "yaw": <yaw>,
-                  "velocity_m_per_s": <velocity_m_per_s>,
             }
       ]
 }
@@ -57,7 +64,6 @@ The evaluation expects a dictionary of lists of dictionaries
 - `translation_m`: xyz-components of the object translation in the city reference frame, in meters.
 - `size`: Object extent along the x,y,z axes in meters.
 - `yaw`: Object heading rotation along the z axis.
-- `velocity_m_per_s`: Object veloicty along the x,y,z axes.
 
 An example looks like this:
 
@@ -85,15 +91,8 @@ example_tracks = {
              [1.4323177 , 0.79862624, 1.5229694 ],
              [0.7979312 , 0.6317313 , 1.4602867 ]], dtype=float32),
       'yaw': array([-1.1205611 , ... , -1.1305285 , -1.1272993], dtype=float32),
-      'velocity_m_per_s': array([[ 2.82435445e-03, -8.80148250e-04, -1.52388044e-04],
-             [ 1.73744695e-01, -3.48345393e-01, -1.52417628e-02],
-             [ 7.38469649e-02, -1.16846527e-01, -5.85577238e-03],
-             ...,
-             [-1.38887463e+00,  3.96778419e+00,  1.45435923e-01],
-             [ 2.23189720e+00, -5.40360805e+00, -2.14317040e-01],
-             [ 9.81130002e-02, -2.00860636e-01, -8.68975817e-03]]),
-      'label': array([ 0, 0, ... 9,  0], dtype=int32),
-      'name': array(['REGULAR_VEHICLE', ..., 'STOP_SIGN', 'REGULAR_VEHICLE'], dtype='<U31'),
+      'label': array([ 0, 0, ... 1,  0], dtype=int32),
+      'name': array(['REFERRED_OBJECT', ..., 'RELATED_OBJECT', 'REFERRED_OBJECT'], dtype='<U31'),
       'score': array([0.54183, ..., 0.47720736, 0.4853499], dtype=float32),
       'track_id': array([0, ... , 11, 12], dtype=int32),
     },
@@ -109,6 +108,14 @@ with open("track_predictions.pkl", "wb") as f:
        pickle.dump(example_tracks, f)
 ```
 ~~~
+
+If the file is over 400MB, it must be uploaded to the EvalAI server via command line. This can be done with
+
+```bash
+pip install evalai
+evalai set_token <EvalAI_account_token>
+evalai challenge 2469 phase 4899 submit --file output/evaluation/val/track_predictions.pkl --large
+```
 
 ### Evaluation Metrics
 
@@ -132,4 +139,6 @@ res =  evaluate(track_predictions, labels, objective_metric, ego_distance_thresh
 - `ego_distance_threshold_m`: Filter for all detections outside of `ego_distance_threshold_m` (default is 50 meters).
 - `dataset_dir`: Path to dataset directory (e.g. data/Sensor/val)
 - `outputs_dir`: Path to output directory
+```
 
+ 
