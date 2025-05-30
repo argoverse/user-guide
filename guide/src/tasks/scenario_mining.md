@@ -23,6 +23,8 @@ s5cmd --no-sign-request cp "s3://argoverse/tasks/scenario_mining/*" $TARGET_DIR
 - Referential Classification: [https://github.com/CainanD/RefAV](https://github.com/CainanD/RefAV) 
 - Tracking: [https://github.com/neeharperi/LT3D](https://github.com/neeharperi/LT3D/tree/main)
 
+We provide additional tracking outputs from previous winning Argoverse submissions on the test set [here](https://drive.google.com/file/d/1X19D5pBBO56eb_kvPOePLLhHDCsY0yql/view)
+
 ## Scenario Mining Categories
 
 | **Category** | **Description** |
