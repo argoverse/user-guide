@@ -141,4 +141,17 @@ res =  evaluate(track_predictions, labels, objective_metric, ego_distance_thresh
 - `outputs_dir`: Path to output directory
 ```
 
+## Supporting Publications
+
+If you participate in this challenge, please consider citing:
+
+```BibTeX 
+@article{davidson2025refav,
+  title={RefAV: Towards Planning-Centric Scenario Mining},
+  author={Davidson, Cainan and Ramanan, Deva and Peri, Neehar},
+  journal={arXiv preprint arXiv:2505.20981},
+  year={2025}
+}
+```
+
  
