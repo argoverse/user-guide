@@ -123,10 +123,10 @@ evalai challenge 2469 phase 4899 submit --file output/evaluation/val/track_predi
 
 | **Metric** | **Description** |
 |:-----------|:----------------|
-| $\text{HOTA-Temporal}$ | HOTA on temporally localized tracks. |
-| $\text{HOTA}$ | HOTA on the full length of a track |
-| $\text{Timestamp F1}$ | Timestamp level classificaiton metric |
-| $\text{Scenario F1}$ | Scenario level classification metric. |
+| $\text{HOTA-Temporal}$ | HOTA on temporally localized tracks |
+| $\text{HOTA-Track}$ | HOTA on the full length of a referred track |
+| $\text{Timestamp Balanced Accuracy}$ | Timestamp level classification metric |
+| $\text{Log Balanced Accuracy}$ | Log level classification metric |
 
 HOTA explicitly balances the effect of performing accurate detection, association, and localization into a single unified metric. It is shown to better align with human visual evaluation of tracking performance. For more information, please check out HOTA: A Higher Order Metric for Evaluating Multi-Object Tracking. Jonathon Luiten, Aljosa Osep, Patrick Dendorfer, Philip Torr, Andreas Geiger, Laura Leal-Taixe, Bastian Leibe. IJCV 2020
 
