@@ -28,15 +28,15 @@ First, install `s5cmd` using [the installation instructions here](https://github
 
 ```bash
 SHARD_DIR={DESIRED PATH FOR TAR.GZ files}
-s5cmd --no-sign-request cp s3://argoverse/av2/tars/tbv/*.tar.gz ${SHARD_DIR}
+s5cmd --no-sign-request cp s3://argoverse/datasets/av2/tars/tbv/*.tar.gz ${SHARD_DIR}
 ```
 
 If you would prefer to not install a 3rd party download tool (`s5cmd`), you can use `wget` to download the `tar.gz` files:
 ```bash
-wget https://s3.amazonaws.com/argoverse/av2/tars/tbv/TbV_v1.0_shard0.tar.gz
-wget https://s3.amazonaws.com/argoverse/av2/tars/tbv/TbV_v1.0_shard1.tar.gz
+wget https://s3.amazonaws.com/argoverse/datasets/av2/tars/tbv/TbV_v1.0_shard0.tar.gz
+wget https://s3.amazonaws.com/argoverse/datasets/av2/tars/tbv/TbV_v1.0_shard1.tar.gz
 ...
-wget https://s3.amazonaws.com/argoverse/av2/tars/tbv/TbV_v1.0_shard20.tar.gz
+wget https://s3.amazonaws.com/argoverse/datasets/av2/tars/tbv/TbV_v1.0_shard20.tar.gz
 ```
 
 Next, extract TbV tar.gz files that were just downloaded to a local disk using [`untar_tbv.py`](https://github.com/argoai/av2-api/blob/main/tutorials/untar_tbv.py):
@@ -46,7 +46,7 @@ python tutorials/untar_tbv.py
 **Not Recommended**: If you want to directly transfer the extracted files, you may use:
 ```bash
 DESIRED_TBV_DATAROOT={DESIRED LOCAL DIRECTORY PATH FOR TBV VEHICLE LOGS}
-s5cmd --no-sign-request cp s3://argoverse/av2/tbv/* ${DESIRED_TBV_DATAROOT}
+s5cmd --no-sign-request cp s3://argoverse/datasets/av2/tbv/* ${DESIRED_TBV_DATAROOT}
 ```
 
 ## Log Distribution Across Cities
