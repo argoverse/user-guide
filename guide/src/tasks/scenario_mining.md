@@ -8,7 +8,7 @@
 
 Autonomous Vehicles (AVs) collect and pseudo-label terabytes of multi-modal data localized to HD maps during normal fleet tests. However, identifying interesting and safety critical scenarios from uncurated data streams is prohibitively time-consuming and error-prone. Retrieving and processing specific scenarios for ego-behavior evaluation, safety testing, or active learning at scale remains a major challenge. While prior works have explored this problem in the context of structured queries and hand-crafted heuristics, we are hosting this challenge to solicit better end-to-end solutions to this important problem.
 
-Our benchmark includes 10,000 planning-centric natural language queries. Challenge participants can use all RGB frames, Lidar sweeps, HD Maps, and track annotations from the AV2 sensor dataset to find relevant actors in each log. Methods will be evaluated at three levels of spatial and temporal granularity. First, methods must determine if a scenario (defined by a natural language query) occurs in the log. A scenario is a set of objects, actions, map elements, and/or interactions that occur over a specified timeframe. If the scenario occurs in the log, methods must temporally localize (e.g. find the start and end time) the scenario. Lastly, methods must detect and track all objects relevant to the text description. Our primary evaluation metric is HOTA-Temporal, a spatial tracking metric that only considers the scenario objects during the timeframe when the scenario is occuring.
+Our benchmark includes 10,000 planning-centric natural language queries. Challenge participants can use all RGB frames, Lidar sweeps, HD Maps, and track annotations from the AV2 sensor dataset to find relevant actors in each log. Methods will be evaluated at three levels of spatial and temporal granularity. First, methods must determine if a scenario (defined by a natural language query) occurs in the log. A scenario is a set of objects, actions, map elements, and/or interactions that occur over a specified timeframe. If the scenario occurs in the log, methods must temporally localize (e.g. find the start and end time) the scenario. Lastly, methods must detect and track all objects relevant to the text description. Our primary evaluation metric is HOTA-Temporal, a spatial tracking metric that only considers the scenario objects during the timeframe when the scenario is occurring.
 
 ## Downloading Scenario Mining Annotations
 We recommend using the open-source [s5cmd](https://github.com/peak/s5cmd) tool to transfer the data to your local filesystem.
@@ -43,7 +43,7 @@ The submission site and leaderboard are hosted at [EvalAI](https://eval.ai/web/c
 
 - `log_id`: Log id associated with the tracks.
 - `prompt` : natural language text prompt.
-- `timestamp_ns`: Timestamp associated with the synced lidar video/frames.
+- `timestamp_ns`: Timestamp associated with the synced lidar/video frames.
 - `is_positive`: Whether the video timestamp contains the referred object or actions.
 
 An example looks like this:
