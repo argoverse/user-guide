@@ -25,6 +25,61 @@ s5cmd --no-sign-request cp "s3://argoverse/tasks/scenario_mining/*" $TARGET_DIR
 
 We provide additional tracking outputs from previous winning Argoverse submissions on the test set [here](https://drive.google.com/file/d/1X19D5pBBO56eb_kvPOePLLhHDCsY0yql/view)
 
+
+### Temporal Track Submission Format 
+
+The submission site and leaderboard are hosted at [EvalAI](https://eval.ai/web/challenges/challenge-page/2662/overview). You are required to submit a .pkl file. The evaluation expects a dictionary keyed by (log_id, prompt) tuples with values being lists containing 30-40 dicts corresponding to the evaluation timestamps in each log_id.
+
+```python
+{
+      (<log_id>, <prompt>): [
+            {
+                  "timestamp_ns": <timestamp_ns>,
+                  "is_positive": <is_positive>
+            }
+      ]
+}
+```
+
+- `log_id`: Log id associated with the tracks.
+- `prompt` : natural language text prompt.
+- `timestamp_ns`: Timestamp associated with the synced lidar video/frames.
+- `is_positive`: Whether the video timestamp contains the referred object or actions.
+
+An example looks like this:
+
+~~~admonish example
+
+```python
+
+# (1). Example tracks.
+example_predictions = {
+  ('02678d04-cc9f-3148-9f95-1ba66347dff9', 'a car turning left'): [
+    {
+       'timestamp_ns': 315969904359876000,
+       'is_positive': True
+    },
+    ...
+  ],
+  ...
+}
+
+# (2). Prepare for submission.
+import pickle
+
+with open("temporal_predictions_test.pkl", "wb") as f:
+       pickle.dump(example_predictions, f)
+```
+~~~
+
+If the file is over 400MB, it must be uploaded to the EvalAI server via command line. This can be done with
+
+```bash
+pip install evalai
+evalai set_token <EvalAI_account_token>
+evalai challenge 2662 phase 5284 submit --file path/to/local/temporal_predictions_test.pkl --large
+```
+
 ## Scenario Mining Categories
 
 | **Category** | **Description** |
@@ -33,11 +88,7 @@ We provide additional tracking outputs from previous winning Argoverse submissio
 | `RELATED_OBJECT` | All objects related to the prompt, but not the referred object. |
 | `OTHER_OBJECT` | All other objects that are not referred or relevant to the prompt. |
 
-
-### Submission Format 
-
-
-The submission site and leaderboard are hosted at [EvalAI](https://eval.ai/web/challenges/challenge-page/2469/overview). You are required to submit a .pkl file. The evaluation expects a dictionary of lists of dictionaries
+### Spatio-Temporal Track Submission Format 
 
 ```python
 {
@@ -56,13 +107,13 @@ The submission site and leaderboard are hosted at [EvalAI](https://eval.ai/web/c
 }
 ```
 
-- `log_id`: Log id associated with the track, also called `seq_id`.
+- `log_id`: Log id associated with the tracks.
 - `prompt` : natural language text prompt.
 - `timestamp_ns`: Timestamp associated with the detections.
 - `track_id`: Unique id assigned to each track, this is produced by your tracker.
 - `score`: Track confidence.
-- `label`: Integer index of the object class.
-- `name`: Object class name.
+- `label`: Integer index of the object category.
+- `name`: Object category name.
 - `translation_m`: xyz-components of the object translation in the city reference frame, in meters.
 - `size`: Object extent along the x,y,z axes in meters.
 - `yaw`: Object heading rotation along the z axis.
@@ -106,7 +157,7 @@ example_tracks = {
 # (2). Prepare for submission.
 import pickle
 
-with open("track_predictions.pkl", "wb") as f:
+with open("track_predictions_test.pkl", "wb") as f:
        pickle.dump(example_tracks, f)
 ```
 ~~~
@@ -116,7 +167,7 @@ If the file is over 400MB, it must be uploaded to the EvalAI server via command 
 ```bash
 pip install evalai
 evalai set_token <EvalAI_account_token>
-evalai challenge 2469 phase 4899 submit --file output/evaluation/val/track_predictions.pkl --large
+evalai challenge 2662 phase 5282 submit --file path/to/track_predictions_test.pkl --large
 ```
 
 ### Evaluation Metrics
@@ -128,7 +179,7 @@ evalai challenge 2469 phase 4899 submit --file output/evaluation/val/track_predi
 | $\text{Timestamp Balanced Accuracy}$ | Timestamp level classification metric |
 | $\text{Log Balanced Accuracy}$ | Log level classification metric |
 
-HOTA explicitly balances the effect of performing accurate detection, association, and localization into a single unified metric. It is shown to better align with human visual evaluation of tracking performance. For more information, please check out HOTA: A Higher Order Metric for Evaluating Multi-Object Tracking. Jonathon Luiten, Aljosa Osep, Patrick Dendorfer, Philip Torr, Andreas Geiger, Laura Leal-Taixe, Bastian Leibe. IJCV 2020
+All metrics are computed by taking the average value over each of the unique prompts in the scenario mining dataset. In this way, each prompt can be viewed as its own class. HOTA explicitly balances the effect of performing accurate detection, association, and localization into a single unified metric. It is shown to better align with human visual evaluation of tracking performance. For more information, please check out HOTA: A Higher Order Metric for Evaluating Multi-Object Tracking. Jonathon Luiten, Aljosa Osep, Patrick Dendorfer, Philip Torr, Andreas Geiger, Laura Leal-Taixe, Bastian Leibe. IJCV 2020
 
 We can run tracking evaluation using the following code snippet. 
 ```bash 
@@ -148,11 +199,11 @@ res =  evaluate(track_predictions, labels, objective_metric, ego_distance_thresh
 If you participate in this challenge, please consider citing:
 
 ```BibTeX 
-@article{davidson2025refav,
+@inproceedings{davidson2026refav,
   title={RefAV: Towards Planning-Centric Scenario Mining},
   author={Davidson, Cainan and Ramanan, Deva and Peri, Neehar},
-  journal={arXiv preprint arXiv:2505.20981},
-  year={2025}
+  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2026}
 }
 ```
 
